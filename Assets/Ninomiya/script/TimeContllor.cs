@@ -15,10 +15,19 @@ public class TimeContllor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // countTimeに、ゲームが開始してからの秒数を格納
-        countTime -= Time.deltaTime;
+        if(GameManager.Instance.IsGame)
+        {
+            // countTimeに、ゲームが開始してからの秒数を格納
+            countTime -= Time.deltaTime;
 
-        // 小数2桁にして表示
-        GetComponent<Text>().text = "Time:" + "  "+ countTime.ToString("F0");
+            // 小数0桁にして表示
+            GetComponent<Text>().text = "Time:" + "  " + countTime.ToString("F0");
+
+            if (countTime < 0)
+            {
+                GameManager.Instance.SwichGame();
+            }
+        }
+        
     }
 }
