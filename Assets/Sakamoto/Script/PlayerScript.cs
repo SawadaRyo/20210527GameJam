@@ -13,39 +13,51 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
     private Rigidbody2D _rb;
 
     //ステータス
+    [Header("ステータス")]
     [SerializeField]private int _player_MaxHp;
     private int _player_Hp;
-    [SerializeField]private int _player_Attack;
+    public int Player_Attack;
 
     //攻撃力アップアイテムに使う変数
     private bool _powerAttackBool;
     private int _powerAttackNum = 5;
-    private float _powerItemTime;
+   [Header("パワーアップアイテムの効果時間")] 
+    [SerializeField]private float _powerItemTime;
     private float _powerItemTimeCount;
 
     //無敵担うアイテムをとった時に使う変数
     private bool _InvincibleBool;
     //プレイヤーの移動速度
+    [Header("プレイヤーの移動速度")]
     [SerializeField] private float _speed;
     //移動変数
     private float _movex;
     private float _movey;
     //プレイヤーのTransform
     private Vector3 _player_Position;
-    //呼び出す弾とマズル
+
+    [Header("呼び出す弾とマズル")]
     [SerializeField] private GameObject _ShotBulletPrefab;
     [SerializeField] private GameObject _shotMazzule;
 
-    //ボムのプレハブ
+    [Header("ボムのプレハブ")]
     [SerializeField] private GameObject _bombPrefab;
-    //弾を出す間隔
+
+    [Header("弾を出す間隔")]
     [SerializeField] private float _shotSetInterval;
+    //オーディオ
+    private AudioSource _audioSource;
+    private AudioClip _shotSound;
+
+    [Header("バリアのイメージのオブジェクト")]
+    [SerializeField] private GameObject _barrier;
+
     private float _shotCountTime;
 
     void Start()
     {
         _player_Position = GetComponent<Transform>().position;
-
+        _audioSource = GetComponent<AudioSource>();
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -65,7 +77,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
             if (_powerItemTime < _powerItemTimeCount) 
             {
                 //攻撃力を下げる
-                _player_Attack -= _powerAttackNum;
+                Player_Attack -= _powerAttackNum;
                 _powerAttackBool = false;
             }
         }
@@ -113,6 +125,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
     {
         if (Input.GetKey(KeyCode.Mouse0) && _shotSetInterval < _shotCountTime)
         {
+            _audioSource.PlayOneShot(_shotSound);
             Instantiate(_ShotBulletPrefab, _shotMazzule.transform.position, _shotMazzule.transform.rotation);
             _shotCountTime = 0;
         }
@@ -131,7 +144,8 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
         }
         else 
         {
-            _InvincibleBool = true;
+            _InvincibleBool = false;
+            _barrier.SetActive(false);
         }
         
         if (GetHp() <= 0) 
@@ -155,13 +169,14 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
     {
         _powerItemTimeCount = 0;
         //攻撃力を上げる
-        _player_Attack += _powerAttackNum;
+        Player_Attack += _powerAttackNum;
         _powerAttackBool = true;
     }
 
     public void InvincibleItem() 
     {
         _InvincibleBool = true;
+        _barrier.SetActive(true);
     }
 
     //private void OnTiggerEnter2D(Collision collision)
@@ -201,9 +216,9 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
 
     public void SetAttack(int attack)
     {
-        _player_Attack = attack;
+        Player_Attack = attack;
     }
 
-    public int GetAttack() => _player_Attack;
+    public int GetAttack() => Player_Attack;
     #endregion
 }
