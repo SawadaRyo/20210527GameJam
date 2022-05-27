@@ -10,15 +10,14 @@ public class GameManager : SingletonBehaviour<GameManager>
     float m_score = 0;
     float m_multiplyScore = 1f;
     bool m_isCombo = false;
+    bool m_isGame = false;
+    public bool IsGame => m_isGame;
     void Start()
     {
         StartCoroutine(Combo());
     }
 
-    void Update()
-    {
-        Debug.Log(m_multiplyScore);
-    }
+    
     public void PlusScore(float plusScore)
     {
         if (!m_isCombo)
