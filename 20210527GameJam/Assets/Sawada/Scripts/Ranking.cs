@@ -43,7 +43,7 @@ public class Ranking : SingletonBehaviour<Ranking>
 
         for (int i = 0; i < m_scores.Length; i++)
         {
-            m_scoreText[i].text = string
+            //m_scoreText[i].text = string
         }
     }
 }
