@@ -88,6 +88,10 @@ public class EnemyBase : MonoBehaviour, IDamageble
 
     protected virtual void OnDisable()
     {
+        if (transform.parent.TryGetComponent(out INotice notice))
+        {
+            notice.Notice();
+        }
         DropAnItem();
         //GameManager.Instance.PlusScore(_score);
     }

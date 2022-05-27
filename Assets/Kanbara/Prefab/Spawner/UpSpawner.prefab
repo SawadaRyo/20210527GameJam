@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 4076989709248950876, guid: dbdb3da4cd32fca4fac9340500938bc3, type: 3}
   _interval: 1000
+  _enemyNumLimit: 10
   _isChangeSpawnPosition: 1
   _speed: 3
   _direction: 1

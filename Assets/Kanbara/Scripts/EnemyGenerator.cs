@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyGenerator : MonoBehaviour
+public class EnemyGenerator : MonoBehaviour, INotice
 {
     [SerializeField]
     [Header("生成するEnemy")]
@@ -13,6 +13,10 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField]
     [Header("インターバル(ミリ秒)")]
     int _interval = 100;
+
+    [SerializeField]
+    [Header("同時に出現可能なEnemyの数")]
+    int _enemyNumLimit;
 
     [SerializeField]
     [Header("スポーン位置を変えるかどうか")]
@@ -46,6 +50,7 @@ public class EnemyGenerator : MonoBehaviour
     float _time;
     bool _canGanerate = true;
     bool _isDefault = true;
+    int _enemyNum = 0;
 
     private void Start()
     {
@@ -75,9 +80,14 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Ganerate()
     {
+        if(_enemyNumLimit <= _enemyNum)
+        {
+            return;
+        }
         if (_enemy != null)
         {
             Instantiate(_enemy, this.transform);
+            _enemyNum++;
         }
         _canGanerate = false;
     }
@@ -127,5 +137,10 @@ public class EnemyGenerator : MonoBehaviour
                 _isDefault = true;
             }
         }
+    }
+
+    public void Notice()
+    {
+        _enemyNum--;
     }
 }
