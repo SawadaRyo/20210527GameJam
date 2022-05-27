@@ -93,7 +93,7 @@ public class EnemyBase : MonoBehaviour, IDamageble
             notice.Notice();
         }
         DropAnItem();
-        //GameManager.Instance.PlusScore(_score);
+        GameManager.Instance.PlusScore(_score);
     }
 
     public enum EnemyLevel
