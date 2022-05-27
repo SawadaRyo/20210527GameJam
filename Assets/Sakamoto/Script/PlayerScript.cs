@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour, IDamageble, IItemInterface
 {
+    public enum PlayerType 
+    {
+        Standard,
+        powerUp,
+        Invincible,
+    }
     private Rigidbody2D _rb;
 
     //ステータス
@@ -19,9 +25,6 @@ public class PlayerScript : MonoBehaviour
 
     //無敵担うアイテムをとった時に使う変数
     private bool _InvincibleBool;
-    private float _InvincibleItemTime;
-    private float _InvincibleItemCount;
-
     //プレイヤーの移動速度
     [SerializeField] private float _speed;
     //移動変数
@@ -32,6 +35,8 @@ public class PlayerScript : MonoBehaviour
     //呼び出す弾とマズル
     [SerializeField] private GameObject _ShotBulletPrefab;
     [SerializeField] private GameObject _shotMazzule;
+
+    [SerializeField] private GameObject _bombPrefab;
     //弾を出す間隔
     [SerializeField] private float _shotSetInterval;
     private float _shotCountTime;
@@ -112,9 +117,13 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-
-    private void AddDamage(int damage) 
+    /// <summary>
+    /// ダメージを受ける処理
+    /// </summary>
+    /// <param name="damage"></param>
+    public void AddDamage(int damage) 
     {
+        //無敵の時はダメージを受けない
         if (!_InvincibleBool)
         {
             SetHp(GetHp() - damage);
@@ -130,24 +139,45 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void OnTiggerEnter2D(Collision collision)
+    /// <summary>
+    /// 爆弾を出す処理
+    /// </summary>
+    private void bomb() 
     {
-        //パワーアップアイテムをとった時
-        if (collision.gameObject.tag == "PowerItem")
+        if (Input.GetButton("Fire1")) 
         {
-            _powerItemTimeCount = 0;
-            //攻撃力を上げる
-            _player_Attack += _powerAttackNum;
-            _powerAttackBool = true;
-
-        }
-
-        //無敵アイテムをとった時
-        if (collision.gameObject.tag == "InvincibleItem") 
-        {
-            
+            Instantiate(_bombPrefab, _shotMazzule.transform.position, _shotMazzule.transform.rotation);
         }
     }
+
+    public void PowerUp() 
+    {
+        _powerItemTimeCount = 0;
+        //攻撃力を上げる
+        _player_Attack += _powerAttackNum;
+        _powerAttackBool = true;
+    }
+
+    public void InvincibleItem() 
+    {
+        _InvincibleBool = true;
+    }
+
+    //private void OnTiggerEnter2D(Collision collision)
+    //{
+    //    //パワーアップアイテムをとった時
+    //    if (collision.gameObject.tag == "PowerItem")
+    //    {
+    //        
+
+    //    }
+
+    //    //無敵アイテムをとった時
+    //    if (collision.gameObject.tag == "InvincibleItem") 
+    //    {
+    //        _InvincibleBool = true;
+    //    }
+    //}
 
     /// <summary>
     /// PlayerStatus
