@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Ranking : SingletonBehaviour<Ranking>
 {
     int[] m_scores = new int[10];
-    Text[] m_scoreText = new Text[10];
+    [SerializeField]Text[] m_scoreText = new Text[10];
     void Start()
     {
         ScoreSort(0);
@@ -43,7 +43,7 @@ public class Ranking : SingletonBehaviour<Ranking>
 
         for (int i = 0; i < m_scores.Length; i++)
         {
-            //m_scoreText[i].text = string
+            m_scoreText[i].text = string.Format($"{m_scores[i]}");
         }
     }
 }
