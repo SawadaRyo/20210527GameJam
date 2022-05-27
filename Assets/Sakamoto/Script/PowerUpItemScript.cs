@@ -9,6 +9,7 @@ public class PowerUpItemScript : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out IItemInterface ItemInter))
         {
             ItemInter.PowerUp();
+            Destroy(this.gameObject);
         }
     }
 }

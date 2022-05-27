@@ -9,6 +9,7 @@ public class InvincibleItemScript : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out IItemInterface ItemInter))
         {
             ItemInter.InvincibleItem();
+            Destroy(this.gameObject);
         }
     }
 }
