@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour, IDamageble, IItemInterface
+public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemInterface
 {
     public enum PlayerType 
     {
@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour, IDamageble, IItemInterface
 
     //攻撃力アップアイテムに使う変数
     private bool _powerAttackBool;
-    private int _powerAttackNum;
+    private int _powerAttackNum = 5;
     private float _powerItemTime;
     private float _powerItemTimeCount;
 
@@ -36,6 +36,7 @@ public class PlayerScript : MonoBehaviour, IDamageble, IItemInterface
     [SerializeField] private GameObject _ShotBulletPrefab;
     [SerializeField] private GameObject _shotMazzule;
 
+    //ボムのプレハブ
     [SerializeField] private GameObject _bombPrefab;
     //弾を出す間隔
     [SerializeField] private float _shotSetInterval;
