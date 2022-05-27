@@ -70,4 +70,8 @@ public class GameManager : SingletonBehaviour<GameManager>
         }
         yield break;
     }
+    public void SwichGame()
+    {
+        m_isGame = !m_isGame;
+    }
 }
