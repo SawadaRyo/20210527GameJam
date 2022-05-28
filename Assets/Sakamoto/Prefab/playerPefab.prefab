@@ -9900,7 +9900,7 @@ Transform:
   m_GameObject: {fileID: 8088780406463260543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 8088780406444051430}
   - {fileID: 8088780405743266840}
@@ -9999,7 +9999,6 @@ MonoBehaviour:
   _speed: 5
   _shotBulletPrefab: {fileID: 7272929872250139248, guid: a2ca72827f7c1f5488e60ea5c32f3867, type: 3}
   _shotMuzzule: {fileID: 8088780406444051425}
-  _bombPrefab: {fileID: 5958554745603749258, guid: 9eead374815ffa849b5d433baaf2fcac, type: 3}
   _shotSetInterval: 0.5
   _barrier: {fileID: 0}
 --- !u!58 &8088780406463260528
