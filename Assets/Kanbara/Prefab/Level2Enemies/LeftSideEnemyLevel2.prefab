@@ -186,7 +186,7 @@ MonoBehaviour:
   _bullet: {fileID: 7826299762098757166, guid: fda9ba436f0f5d944866167c11541ef7, type: 3}
   _direction: 2
   _muzzle: {fileID: 7349514747626962979}
-  _dropNum: 0
+  _dropNum: 40
   _itemDropNum: 1
   _item: {fileID: 0}
 --- !u!95 &-4984588741422214647

@@ -7,8 +7,8 @@ public class TimeContllor : MonoBehaviour
     [SerializeField] Text m_countDownText = default;
     [SerializeField] Text m_timerText = default;
     [SerializeField] GameObject m_load = default;
-    float m_time = 60;
-    float m_countDown = 3;
+    [SerializeField]float m_time = 60;
+    [SerializeField]float m_countDown = 3;
 
     
 
