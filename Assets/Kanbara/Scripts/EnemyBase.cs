@@ -59,11 +59,13 @@ public class EnemyBase : MonoBehaviour, IDamageble
     [Header("—Ž‚Æ‚·ƒAƒCƒeƒ€")]
     GameObject _item;
 
+
     Rigidbody2D _rb;
     SpriteRenderer _sp;
     int _life;
     float _time = 0;
     bool _canAttack = true;
+    GameObject _player;
 
     protected virtual void OnEnable()
     {
@@ -71,6 +73,7 @@ public class EnemyBase : MonoBehaviour, IDamageble
         _rb = GetComponent<Rigidbody2D>();
         _sp.sprite = _sprite;
         _life = LevelMatch();
+        _player = transform.parent.GetComponent<EnemyGenerator>().Player;
     }
 
     protected virtual void Update()
@@ -158,7 +161,7 @@ public class EnemyBase : MonoBehaviour, IDamageble
         EnemyDirection.Down => Vector2.down,
         EnemyDirection.Left => Vector2.left,
         EnemyDirection.Right => Vector2.right,
-        EnemyDirection.Automatic => transform.position - PlayerScript.Instance.transform.position,
+        EnemyDirection.Automatic => _player.transform.position - transform.position,
         _ => throw new System.NotImplementedException()
     };
 
