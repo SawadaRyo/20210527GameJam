@@ -12,11 +12,6 @@ public class GameManager : SingletonBehaviour<GameManager>
     bool m_isCombo = false;
     bool m_isGame = false;
     public bool IsGame => m_isGame;
-    void Start()
-    {
-        StartCoroutine(Combo());
-    }
-
     
     public void PlusScore(float plusScore)
     {
