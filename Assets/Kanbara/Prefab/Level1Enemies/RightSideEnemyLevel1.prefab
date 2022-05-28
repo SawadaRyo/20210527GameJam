@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6882146866476683745}
   - component: {fileID: 6882146866476683746}
   - component: {fileID: 6882146866476683747}
+  - component: {fileID: -4457860908899588578}
   m_Layer: 0
   m_Name: RightSideEnemyLevel1
   m_TagString: Untagged
@@ -188,3 +189,22 @@ MonoBehaviour:
   _dropNum: 0
   _itemDropNum: 1
   _item: {fileID: 0}
+--- !u!95 &-4457860908899588578
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882146866476683748}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4f0f76b7d0190f4ba26408c1011893e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
