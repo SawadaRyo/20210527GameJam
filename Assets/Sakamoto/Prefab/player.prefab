@@ -9850,7 +9850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8088780406444051430}
   m_Layer: 0
-  m_Name: mazzule
+  m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9992,13 +9992,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06ae0bf675a9054ca8722de461174fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player_MaxHp: 0
-  Player_Attack: 0
+  _player_MaxHp: 50
+  Player_Attack: 3
   _powerItemTime: 5
   _powerParticleObj: {fileID: 8088780405753689222}
-  _speed: 12.31
-  _ShotBulletPrefab: {fileID: 7272929872250139248, guid: a2ca72827f7c1f5488e60ea5c32f3867, type: 3}
-  _shotMazzule: {fileID: 8088780406444051425}
+  _speed: 5
+  _shotBulletPrefab: {fileID: 7272929872250139248, guid: a2ca72827f7c1f5488e60ea5c32f3867, type: 3}
+  _shotMuzzule: {fileID: 8088780406444051425}
   _bombPrefab: {fileID: 5958554745603749258, guid: 9eead374815ffa849b5d433baaf2fcac, type: 3}
   _shotSetInterval: 0.5
   _barrier: {fileID: 0}

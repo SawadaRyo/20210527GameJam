@@ -46,9 +46,6 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
     [SerializeField] private GameObject _shotBulletPrefab;
     [SerializeField] private GameObject _shotMuzzule;
 
-    [Header("ボムのプレハブ")]
-    [SerializeField] private GameObject _bombPrefab;
-
     [Header("弾を出す間隔")]
     [SerializeField] private float _shotSetInterval;
 
@@ -95,9 +92,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
         
     }
 
-    /// <summary>
-    /// プレイヤーを動かす処理
-    /// </summary>
+    /// <summary> プレイヤーを動かす処理 </summary>
     private void Movement() 
     {
 
@@ -127,9 +122,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
         _rb.velocity = new Vector2(_movex * _speed, _movey * _speed);
     }
 
-    /// <summary>
-    /// プレイヤーが弾を出す処理
-    /// </summary>
+    /// <summary> プレイヤーが弾を出す処理 </summary>
     private void Shot() 
     {
         if (Input.GetKey(KeyCode.Mouse0) && _shotSetInterval < _shotCountTime)
@@ -140,9 +133,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
         }
     }
 
-    /// <summary>
-    /// ダメージを受ける処理
-    /// </summary>
+    /// <summary> ダメージを受ける処理 </summary>
     /// <param name="damage"></param>
     public void AddDamage(int damage) 
     {
@@ -163,20 +154,9 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
         }
     }
 
-    /// <summary>
-    /// 爆弾を出す処理
-    /// </summary>
-    //private void bomb() 
-    //{
-    //    if (Input.GetButton("Fire1")) 
-    //    {
-    //        Instantiate(_bombPrefab, _shotMazzule.transform.position, _shotMazzule.transform.rotation);
-    //    }
-    //}
+    
 
-    /// <summary>
-    /// パワーアップアイテムをとった時の処理
-    /// </summary>
+    /// <summary>パワーアップアイテムをとった時の処理</summary>
     public void PowerUp() 
     {
         _powerItemTimeCount = 0;
@@ -186,31 +166,14 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
         _powerAttackBool = true;
     }
 
-    /// <summary>
-    /// 無敵アイテムをとった時の処理
-    /// </summary>
+    /// <summary>無敵アイテムをとった時の処理</summary>
     public void InvincibleItem() 
     {
         _InvincibleBool = true;
         _barrier.SetActive(true);
     }
 
-    //コメント
-    //private void OnTiggerEnter2D(Collision collision)
-    //{
-    //    //パワーアップアイテムをとった時
-    //    if (collision.gameObject.tag == "PowerItem")
-    //    {
-    //        
-
-    //    }
-
-    //    //無敵アイテムをとった時
-    //    if (collision.gameObject.tag == "InvincibleItem") 
-    //    {
-    //        _InvincibleBool = true;
-    //    }
-    //}
+  
 
     /// <summary>
     /// PlayerStatus
