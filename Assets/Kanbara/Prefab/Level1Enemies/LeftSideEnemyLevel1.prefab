@@ -152,7 +152,7 @@ MonoBehaviour:
   _enemyLevel: 0
   _speed: 1
   _coolTime: 100
-  _isAttack: 1
+  _isAttack: 0
   _bullet: {fileID: 7826299762098757166, guid: fda9ba436f0f5d944866167c11541ef7, type: 3}
   _direction: 2
   _muzzle: {fileID: 2598725957880037833}

@@ -6,14 +6,11 @@ public class TimeContllor : MonoBehaviour
 {
     [SerializeField] Text m_countDownText = default;
     [SerializeField] Text m_timerText = default;
-    float m_countTime = 60;
+    [SerializeField] GameObject m_load = default;
+    float m_time = 60;
     float m_countDown = 3;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -37,15 +34,16 @@ public class TimeContllor : MonoBehaviour
             m_countDownText.enabled = false;
             m_timerText.enabled = true;
             // countTime‚ÉAƒQ[ƒ€‚ªŠJn‚µ‚Ä‚©‚ç‚Ì•b”‚ğŠi”[
-            m_countTime -= Time.deltaTime;
+            m_time -= Time.deltaTime;
 
             // ¬”0Œ…‚É‚µ‚Ä•\¦
             //m_timerText.text = "Time:" + "  " + m_countTime.ToString("F0");
-            m_timerText.text = string.Format($"Time:{(int)m_countTime}");
+            m_timerText.text = string.Format($"Time:{(int)m_time}");
 
-            if (m_countTime < 0)
+            if (m_time < 0)
             {
                 GameManager.Instance.SwichGame();
+                m_load.GetComponent<LoadScene>().ScenesLoad(3);
             }
         }
     }
