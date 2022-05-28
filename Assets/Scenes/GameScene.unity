@@ -876,7 +876,7 @@ MonoBehaviour:
   m_countDownText: {fileID: 45238133}
   m_timerText: {fileID: 1738264544}
   m_load: {fileID: 2144968412}
-  m_time: 5
+  m_time: 60
   m_countDown: 3
 --- !u!1001 &1468637807
 PrefabInstance:
