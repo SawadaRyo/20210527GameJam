@@ -68,28 +68,31 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
 
     void Update()
     {
-        //弾を出す処理
-        Shot();
-        //プレイヤーを動かす処理
-        Movement();
-
-        //パワーアップアイテムをとった時
-        if (_powerAttackBool) 
+        if(GameManager.Instance.IsGame)
         {
-           _powerItemTimeCount += Time.deltaTime;
+            //弾を出す処理
+            Shot();
+            //プレイヤーを動かす処理
+            Movement();
 
-            if (_powerItemTime < _powerItemTimeCount) 
+            //パワーアップアイテムをとった時
+            if (_powerAttackBool)
             {
-                //攻撃力を下げる
-                Player_Attack -= _powerAttackNum;
-                _powerParticleObj.SetActive(false);
-                _powerAttackBool = false;
+                _powerItemTimeCount += Time.deltaTime;
+
+                if (_powerItemTime < _powerItemTimeCount)
+                {
+                    //攻撃力を下げる
+                    Player_Attack -= _powerAttackNum;
+                    _powerParticleObj.SetActive(false);
+                    _powerAttackBool = false;
+                }
             }
+
+
+            _shotCountTime += Time.deltaTime;
+
         }
-
-
-        _shotCountTime += Time.deltaTime;
-        
     }
 
     /// <summary> プレイヤーを動かす処理 </summary>
