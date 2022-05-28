@@ -153,7 +153,7 @@ MonoBehaviour:
   _speed: 1
   _coolTime: 100
   _isAttack: 1
-  _bullet: {fileID: 0}
+  _bullet: {fileID: 7826299762098757166, guid: fda9ba436f0f5d944866167c11541ef7, type: 3}
   _direction: 3
   _muzzle: {fileID: 3634911702448206087}
   _dropNum: 0

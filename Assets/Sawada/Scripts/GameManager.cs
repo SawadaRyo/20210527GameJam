@@ -12,6 +12,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     bool m_isCombo = false;
     bool m_isGame = false;
     public bool IsGame => m_isGame;
+    public int Score => (int)m_score;
 
     
     public void PlusScore(float plusScore)

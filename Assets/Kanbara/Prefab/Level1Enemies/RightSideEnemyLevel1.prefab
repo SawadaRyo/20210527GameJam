@@ -183,12 +183,12 @@ MonoBehaviour:
   _speed: 1
   _coolTime: 100
   _isAttack: 1
-  _bullet: {fileID: 0}
+  _bullet: {fileID: 7826299762098757166, guid: fda9ba436f0f5d944866167c11541ef7, type: 3}
   _direction: 3
   _muzzle: {fileID: 6882146866036271536}
   _dropNum: 0
   _itemDropNum: 1
-  _item: {fileID: 0}
+  _item: {fileID: 3079804072166486131, guid: 09d740b8c7cb9a34d95081ae3025a67d, type: 3}
 --- !u!95 &-4457860908899588578
 Animator:
   serializedVersion: 3
