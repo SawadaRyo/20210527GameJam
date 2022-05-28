@@ -22,9 +22,11 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
     private bool _powerAttackBool;
     private int _powerAttackNum = 5;
     [Header("パワーアップアイテムの効果時間")] 
+
     [SerializeField]private float _powerItemTime;
     private float _powerItemTimeCount;
     [Header("パワーアップパーティクル")]
+
     [SerializeField] private GameObject _powerParticleObj;
 
     //無敵担うアイテムをとった時に使う変数
@@ -41,8 +43,8 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
     private Vector3 _player_Position;
 
     [Header("呼び出す弾とマズル")]
-    [SerializeField] private GameObject _ShotBulletPrefab;
-    [SerializeField] private GameObject _shotMazzule;
+    [SerializeField] private GameObject _shotBulletPrefab;
+    [SerializeField] private GameObject _shotMuzzule;
 
     [Header("ボムのプレハブ")]
     [SerializeField] private GameObject _bombPrefab;
@@ -133,7 +135,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
         if (Input.GetKey(KeyCode.Mouse0) && _shotSetInterval < _shotCountTime)
         {
             _audioSource.PlayOneShot(_shotSound);
-            Instantiate(_ShotBulletPrefab, _shotMazzule.transform.position, _shotMazzule.transform.rotation);
+            Instantiate(_shotBulletPrefab, _shotMuzzule.transform.position, _shotMuzzule.transform.rotation);
             _shotCountTime = 0;
         }
     }
