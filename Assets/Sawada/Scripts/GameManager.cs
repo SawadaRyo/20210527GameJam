@@ -14,13 +14,18 @@ public class GameManager : SingletonBehaviour<GameManager>
     public bool IsGame => m_isGame;
     public int Score => (int)m_score;
 
-    void Start()
+    void OnEnable()
     {
         DontDestroyOnLoad(gameObject);
     }
 
     public void PlusScore(float plusScore)
     {
+        if(m_scoreText == null)
+        {
+            m_scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        }
+
         if (!m_isCombo)
         {
             m_isCombo = true;
