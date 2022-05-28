@@ -95,7 +95,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
     /// <summary> プレイヤーを動かす処理 </summary>
     private void Movement() 
     {
-
+        var velo = _rb.velocity.normalized;
         _movex = Input.GetAxisRaw("Horizontal");
         _movey = Input.GetAxisRaw("Vertical");
 
@@ -119,7 +119,9 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
             transform.rotation = Quaternion.Euler(0, 0, 90);
         }
 
-        _rb.velocity = new Vector2(_movex * _speed, _movey * _speed);
+        velo.x = _movex * _speed;
+        velo.y = _movey * _speed;
+        _rb.velocity = new Vector2(velo.x, velo.y);
     }
 
     /// <summary> プレイヤーが弾を出す処理 </summary>
