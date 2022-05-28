@@ -18,12 +18,11 @@ public class BulletController2 : MonoBehaviour@//Player‚©‚ç“G‚Ö‚Ì’e
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "enemy") //enemy‚ğ’Ê‰ß‚µ‚½‚çAenemy‚Æ’e‚ğ”j‰ó‚·‚é
+        if (other.gameObject.TryGetComponent(out IDamageble enemyBase)) //enemy‚ğ’Ê‰ß‚µ‚½‚çAenemy‚Æ’e‚ğ”j‰ó‚·‚é
         {
             Destroy(other.gameObject, 0.1f);
             Destroy(gameObject, 0.1f);
-            EnemyBase.Instance.AddDamage(m_damage);
-
+            enemyBase.AddDamage(m_damage);
         }
     }
 
