@@ -21,18 +21,22 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
     //攻撃力アップアイテムに使う変数
     private bool _powerAttackBool;
     private int _powerAttackNum = 5;
-   [Header("パワーアップアイテムの効果時間")] 
+    [Header("パワーアップアイテムの効果時間")] 
     [SerializeField]private float _powerItemTime;
     private float _powerItemTimeCount;
+    [Header("パワーアップパーティクル")]
+    [SerializeField] private GameObject _powerParticleObj;
 
     //無敵担うアイテムをとった時に使う変数
     private bool _InvincibleBool;
+
     //プレイヤーの移動速度
     [Header("プレイヤーの移動速度")]
     [SerializeField] private float _speed;
     //移動変数
     private float _movex;
     private float _movey;
+
     //プレイヤーのTransform
     private Vector3 _player_Position;
 
@@ -45,6 +49,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
 
     [Header("弾を出す間隔")]
     [SerializeField] private float _shotSetInterval;
+
     //オーディオ
     private AudioSource _audioSource;
     private AudioClip _shotSound;
@@ -78,9 +83,11 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
             {
                 //攻撃力を下げる
                 Player_Attack -= _powerAttackNum;
+                _powerParticleObj.SetActive(false);
                 _powerAttackBool = false;
             }
         }
+
 
         _shotCountTime += Time.deltaTime;
         
@@ -157,28 +164,36 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
     /// <summary>
     /// 爆弾を出す処理
     /// </summary>
-    private void bomb() 
-    {
-        if (Input.GetButton("Fire1")) 
-        {
-            Instantiate(_bombPrefab, _shotMazzule.transform.position, _shotMazzule.transform.rotation);
-        }
-    }
+    //private void bomb() 
+    //{
+    //    if (Input.GetButton("Fire1")) 
+    //    {
+    //        Instantiate(_bombPrefab, _shotMazzule.transform.position, _shotMazzule.transform.rotation);
+    //    }
+    //}
 
+    /// <summary>
+    /// パワーアップアイテムをとった時の処理
+    /// </summary>
     public void PowerUp() 
     {
         _powerItemTimeCount = 0;
         //攻撃力を上げる
         Player_Attack += _powerAttackNum;
+        _powerParticleObj.SetActive(true);
         _powerAttackBool = true;
     }
 
+    /// <summary>
+    /// 無敵アイテムをとった時の処理
+    /// </summary>
     public void InvincibleItem() 
     {
         _InvincibleBool = true;
         _barrier.SetActive(true);
     }
 
+    //コメント
     //private void OnTiggerEnter2D(Collision collision)
     //{
     //    //パワーアップアイテムをとった時
