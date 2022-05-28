@@ -22,7 +22,7 @@ public class EnemyGenerator : MonoBehaviour, INotice
 
     [SerializeField]
     [Header("Playerの名前")]
-    string _playerName = "Player";
+    string _playerName = "playerPefab";
 
     [SerializeField]
     [Header("スポーン位置を変えるかどうか")]
