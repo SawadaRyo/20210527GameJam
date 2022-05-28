@@ -150,13 +150,13 @@ MonoBehaviour:
   _score: 1
   _lifeTime: 15
   _enemyLevel: 0
-  _speed: 1
+  _speed: 5
   _coolTime: 100
   _isAttack: 0
   _bullet: {fileID: 7826299762098757166, guid: fda9ba436f0f5d944866167c11541ef7, type: 3}
   _direction: 0
   _muzzle: {fileID: 9016019121556617438}
-  _dropNum: 0
+  _dropNum: 20
   _itemDropNum: 1
   _item: {fileID: 7796013541154610068, guid: 0cd7c9ddda6ab8e42abfde8a7a85f859, type: 3}
 --- !u!95 &8169205128184818448
