@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyGenerator : MonoBehaviour, INotice
 {
+    public GameObject Player { get; private set; }
+
     [SerializeField]
     [Header("生成するEnemy")]
     GameObject _enemy;
@@ -17,6 +19,10 @@ public class EnemyGenerator : MonoBehaviour, INotice
     [SerializeField]
     [Header("同時に出現可能なEnemyの数")]
     int _enemyNumLimit;
+
+    [SerializeField]
+    [Header("Playerの名前")]
+    string _playerName = "Player";
 
     [SerializeField]
     [Header("スポーン位置を変えるかどうか")]
@@ -55,6 +61,7 @@ public class EnemyGenerator : MonoBehaviour, INotice
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        Player = GameObject.Find(_playerName);
     }
 
     private async void Update()
