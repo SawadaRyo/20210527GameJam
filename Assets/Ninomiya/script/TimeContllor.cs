@@ -4,7 +4,10 @@ using UnityEngine.UI;
 
 public class TimeContllor : MonoBehaviour
 {
-    float countTime = 60;
+    [SerializeField] Text m_countDownText = default;
+    [SerializeField] Text m_timerText = default;
+    float m_countTime = 60;
+    float m_countDown = 3;
 
     // Use this for initialization
     void Start()
@@ -17,17 +20,28 @@ public class TimeContllor : MonoBehaviour
     {
         if(GameManager.Instance.IsGame)
         {
-            // countTime‚ÉAƒQ[ƒ€‚ªŠJn‚µ‚Ä‚©‚ç‚Ì•b”‚ğŠi”[
-            countTime -= Time.deltaTime;
-
-            // ¬”0Œ…‚É‚µ‚Ä•\¦
-            GetComponent<Text>().text = "Time:" + "  " + countTime.ToString("F0");
-
-            if (countTime < 0)
+            if(m_countDown >= 0)
             {
-                GameManager.Instance.SwichGame();
+                m_countDownText.enabled = true;
+                m_countDown -= Time.deltaTime;
+                m_countDownText.text = string.Format($"{m_countDown}");
+            }
+            else if(m_countDown <= -1)
+            {
+                m_countDownText.enabled = false;
+                m_timerText.enabled = true;
+                // countTime‚ÉAƒQ[ƒ€‚ªŠJn‚µ‚Ä‚©‚ç‚Ì•b”‚ğŠi”[
+                m_countTime -= Time.deltaTime;
+
+                // ¬”0Œ…‚É‚µ‚Ä•\¦
+                //m_timerText.text = "Time:" + "  " + m_countTime.ToString("F0");
+                m_timerText.text = string.Format($"Time:{m_countTime}");
+
+                if (m_countTime < 0)
+                {
+                    GameManager.Instance.SwichGame();
+                }
             }
         }
-        
     }
 }
