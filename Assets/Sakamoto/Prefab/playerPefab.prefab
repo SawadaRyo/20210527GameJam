@@ -9885,7 +9885,7 @@ GameObject:
   - component: {fileID: 8088780406463260528}
   - component: {fileID: 8088780406463260529}
   m_Layer: 0
-  m_Name: player
+  m_Name: playerPefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
