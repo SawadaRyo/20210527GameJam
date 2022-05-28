@@ -32,6 +32,10 @@ public class EnemyBase : MonoBehaviour, IDamageble
     int _coolTime = 100;
 
     [SerializeField]
+    [Header("当たった時に食らうダメージ")]
+    int _damage = 1;
+
+    [SerializeField]
     [Header("弾を撃つかどうか")]
     bool _isAttack = true;
 
@@ -86,6 +90,14 @@ public class EnemyBase : MonoBehaviour, IDamageble
         if (_time > _lifeTime)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.TryGetComponent(out IDamageble id))
+        {
+            id.AddDamage(_damage);
         }
     }
 

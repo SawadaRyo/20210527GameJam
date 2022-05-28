@@ -63,6 +63,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
         _player_Position = GetComponent<Transform>().position;
         _audioSource = GetComponent<AudioSource>();
         _rb = GetComponent<Rigidbody2D>();
+        _player_Hp = _player_MaxHp;
     }
 
 
@@ -155,7 +156,7 @@ public class PlayerScript : SingletonBehaviour<PlayerScript>, IDamageble, IItemI
         
         if (GetHp() <= 0) 
         {
-            //ゲームオーバー
+            GameObject.Find("Load").GetComponent<LoadScene>().ScenesLoad(3);
         }
     }
 
