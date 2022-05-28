@@ -12,7 +12,7 @@ public class ShotScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerScript>();
+        player = PlayerScript.Instance;
         rb2D = GetComponent<Rigidbody2D>();
         rb2D.AddForce(transform.up * shotSpeed, ForceMode2D.Impulse);
         Destroy(this.gameObject, 1f);
