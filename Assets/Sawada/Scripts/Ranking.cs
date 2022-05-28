@@ -7,13 +7,16 @@ using UnityEngine.UI;
 
 public class Ranking : SingletonBehaviour<Ranking>
 {
+    [SerializeField] GameObject m_rankingPanel = default;
+    [SerializeField] GameObject m_rezultPanel = default;
     [SerializeField] List<int> m_scores = new List<int>(10);
     [SerializeField] Text[] m_scoreText = new Text[10];
     [SerializeField] Text m_bestScore = default;
+    bool m_panelActive = false;
     //Dictionary<int, string> m_score = new Dictionary<int, string>();
     void Start()
     {
-        //ScoreSort();
+        m_rankingPanel.SetActive(m_panelActive);
     }
     void Update()
     {
@@ -43,7 +46,7 @@ public class Ranking : SingletonBehaviour<Ranking>
         m_scores = m;
         for (int i = 0; i < m_scores.Count; i++)
         {
-            m_scoreText[i].text = string.Format($"{m_scores[i]}");
+            m_scoreText[i].text = string.Format($"{i + 1}:{m_scores[i]}");
         }
 
         //var l = m_score.ToDictionary(x => x.Key, x => x.Value);
@@ -54,5 +57,11 @@ public class Ranking : SingletonBehaviour<Ranking>
         //{
         //    m_scoreText[i].text = string.Format($"{m_score.Keys}");
         //}
+    }
+    public void PanelAvtive()
+    {
+        m_panelActive = !m_panelActive;
+        m_rankingPanel.SetActive(m_panelActive);
+        m_rezultPanel.SetActive(!m_panelActive);
     }
 }
