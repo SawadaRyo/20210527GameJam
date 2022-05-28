@@ -17,6 +17,7 @@ public class LoadScene : MonoBehaviour
             case 2:
                 {
                     SceneManager.LoadScene("GameScene");
+                    GameManager.Instance.Reset();
                 }
                 break;
             case 3:
